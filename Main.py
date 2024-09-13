@@ -5,7 +5,7 @@ import networkx as nx
 import numpy as np
 from networkx import neighbors
 
-MAX_WEIGHT = 50
+MAX_WEIGHT = 100
 MAX_NODES = 50
 MIN_NODES = 5
 def crate_random_graph():
@@ -15,88 +15,59 @@ def crate_random_graph():
     G = nx.gnm_random_graph(num_nodes, num_edges)
 
     q = 0 #do un nome all'arco
-    deg = 0 #per calcolare il grado del nodo
-    for u in G:
-        wei = random.randint(1,MAX_WEIGHT)
+    for u, v in G.edges:
+        G[u][v]['number'] = q
+        q += 1
+
+    # Imposta i pesi e numeri degli archi
+    for u in G.nodes:
+        wei = random.randint(1, MAX_WEIGHT)
         G.nodes[u]['weight'] = wei
         G.nodes[u]['orig_weight'] = wei
-        for v in neighbors(G,u):
-            if not G[u][v]:
-                G[u][v]['number'] = q
-                q += 1
-            deg += 1
-
-        G.nodes[u]['deg'] = deg
-        deg = 0
     return  G
 
+def save_graf(G):
+    labels = {}
+    pos = nx.spring_layout(G, seed=3113794652)
+    for u in G.nodes():
+        labels[u] = str(u)+ '/' + str(G.nodes[u]['weight'])
+    nx.draw_networkx_nodes(G,pos)
+    nx.draw_networkx_edges(G, pos)
+    nx.draw_networkx_labels(G, pos, labels, font_size=12)
+    plt.savefig("graf"+ str(z))
+    print(G.nodes().data('weight'))
 
 if __name__ == '__main__':
     random.seed(44)
     for z in range(200):
         G_ori = crate_random_graph()
         G = G_ori.copy()
-        """""
-        # per salvare il grafico
-        labels = {}
-        pos = nx.spring_layout(G, seed=3113794652)
-        for u in G.nodes():
-            labels[u] = str(u)+ '/' + str(G.nodes[u]['weight'])
-        nx.draw_networkx_nodes(G,pos)
-        nx.draw_networkx_edges(G, pos)
-        nx.draw_networkx_labels(G, pos, labels, font_size=12)
-        plt.savefig("graf"+ str(z))
-        print(G.nodes().data('weight'))
-        """
         sol_apx = np.zeros(len(G.nodes))
         num_edge = len(G.edges())
-        i = 1
+        #i = 1
         first_time = True
         lower_bound = 0
         print('grafico num' + str(z) + 'num_nodes='+ str(len(G.nodes()))+' num_edges='+ str(len(G.edges)))
         while True:
             lambda_e = np.zeros(num_edge)
-            R = []
-            for u in G.nodes():
-                R.append(u)
-
-
-            #print(G.nodes().data('deg'))
-            #print(G.edges())
-
-
+            R = set(G.nodes)
             while R:
-                m = MAX_WEIGHT +1
-                actual_min = None
-                for u in R:
-                    if G.nodes[u]['weight'] < m:
-                        actual_min = u
-                        m = G.nodes[u]['weight']
-                #print('alg su nodo' + str(actual_min))
-                if actual_min is not None:
-                    #per il calcolo di alpha prop
-                    prop_weight = 0
-                    for v in nx.neighbors(G,actual_min):
-                        if R.__contains__(v):
-                            prop_weight+= G.nodes[v]['weight']
-                    for v in nx.neighbors(G,actual_min):
-                        if R.__contains__(v):
-                            #alpha = 1 / deg(u)
-                            #lambda_e[G[actual_min][v]['number']] += G.nodes[actual_min]['weight']/G.nodes[actual_min]['deg']
-                            #alpha proporzionale
+                actual_min = min(R, key=lambda u: G.nodes[u]['weight'])
+                prop_weight = sum(G.nodes[v]['weight'] for v in G.neighbors(actual_min) if v in R)
 
-                            lambda_e[G[actual_min][v]['number']] += G.nodes[actual_min]['weight']* G.nodes[v]['weight']/prop_weight
-                            G.nodes[v]['weight'] -= lambda_e[G[actual_min][v]['number']]
-                        #print('il nuovo peso di '+ str(v)+ ' è '+str(G.nodes[v]['weight']))
-                    R.remove(actual_min)
+                for v in G.neighbors(actual_min):
+                    if v in R:
+                        #alpha = 1 / deg(u)
+                        #lambda_e[G[actual_min][v]['number']] += G.nodes[actual_min]['weight']/G.degree[actual_min]
+                        lambda_e[G[actual_min][v]['number']] += G.nodes[actual_min]['weight'] * G.nodes[v]['weight'] / prop_weight
+                        G.nodes[v]['weight'] -= lambda_e[G[actual_min][v]['number']]
+                R.remove(actual_min)
             #print(lambda_e)
             G_check = G.copy()
             temp_node = None
             min_val = MAX_WEIGHT
             for u in G.nodes():
-                som_lambda = 0
-                for v in neighbors(G,u):
-                    som_lambda += lambda_e[G[u][v]['number']]
+                som_lambda = sum(lambda_e[G[u][v]['number']] for v in G.neighbors(u))
                 val = G.nodes[u]['orig_weight'] - som_lambda
                 #print('condizione c1 per nodo '+ str(u)+ '= '+ str(val))
                 if val < min_val:
@@ -107,13 +78,8 @@ if __name__ == '__main__':
                     G_check.remove_node(u)
                     #print('aggiunto nodo'+ str(u))
             #print('il lower bound è ='+ str(lambda_e.sum()))
-            elementi_selezionati = sol_apx[G.nodes()]
-            if  np.all(elementi_selezionati != 1):
-                print()
-                print()
+            if  np.all(sol_apx[np.array(list(G.nodes()))] != 1):
                 print('la ricerca di lambda non è riuscita a potare nessuna c1 =0')
-                print()
-                print()
                 #in caso non riesco a soddisfare c1 uso quello che più ci si avvicina
                 sol_apx[temp_node] = 1
                 G_check.remove_node(temp_node)
@@ -124,8 +90,7 @@ if __name__ == '__main__':
                 #print('è una cover non so se minimale'+ str(np.where(sol_apx == 1)[0]))
                 for j in np.where(sol_apx == 1)[0]:
                     G_check = G_ori.copy()
-                    node_to_remove = np.where(sol_apx == 1)[0]
-                    node_to_remove = np.delete(node_to_remove,np.where(node_to_remove == j))
+                    node_to_remove = np.delete(np.where(sol_apx == 1)[0], np.where(np.where(sol_apx == 1)[0] == j))
                     G_check.remove_nodes_from(node_to_remove)
 
                     if  not G_check.edges():
@@ -135,24 +100,14 @@ if __name__ == '__main__':
                 break
 
             else:
-                #print(G_check.edges())
-                i += 1
-                #print('iterazione ' + str(i))
-
+                #i += 1
                 for u in G_check:
-                    deg = 0
                     G_check.nodes[u]['weight'] = G_check.nodes[u]['orig_weight']
-                    for v in neighbors(G_check,u):
-                        deg += 1
-                    G_check.nodes[u]['deg'] = deg
                 G = G_check
         #print('ricerca lambda eseguita ' + str(i)+ ' volte')
-        sol_trovata = 0
-        for u in G_ori:
-            if sol_apx[u] == 1:
-                sol_trovata += G_ori.nodes[u]['orig_weight']
+        valore_soluzione = sum(G_ori.nodes[u]['orig_weight'] for u in G_ori.nodes if sol_apx[u] == 1)
 
-        print('il lower bound è ' + str(lower_bound)+' mentre la loluzione trovata '+ str(sol_trovata))
+        print('il lower bound è ' + str(lower_bound)+' mentre il valore della soluzione trovata '+ str(valore_soluzione))
 
 
 
