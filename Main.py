@@ -37,10 +37,10 @@ def save_graf(G):
     print(G.nodes().data('weight'))
 
 if __name__ == '__main__':
-    random.seed(44)
+    random.seed(46)
     confronto_sol_list =[]
     sol_esatta= 0
-    for z in range(200):
+    for z in range(100):
         G_ori = crate_random_graph()
         G = G_ori.copy()
         sol_apx = np.zeros(len(G.nodes))
@@ -85,7 +85,7 @@ if __name__ == '__main__':
                 sol_apx[temp_node] = 1
                 G_check.remove_node(temp_node)
             if first_time:
-                lower_bound = lambda_e.sum()
+                lower_bound = round(lambda_e.sum(),2)
                 first_time = False
             if not G_check.edges():
                 #print('è una cover non so se minimale'+ str(np.where(sol_apx == 1)[0]))
@@ -111,7 +111,7 @@ if __name__ == '__main__':
         if confronto_sol == 0:
             sol_esatta += 1
 
-        print('il lower bound è ' + str(lower_bound)+' mentre il valore della soluzione trovata '+ str(valore_soluzione) + 'quindi differenza in percentuale =' + str(confronto_sol)+'%')
+        print('il lower bound è ' + str(lower_bound)+' mentre il valore della soluzione trovata '+ str(valore_soluzione) + ' quindi differenza in percentuale =' + str(confronto_sol)+'%')
         confronto_sol_list.append(confronto_sol)
     print('in media la soluzione trovata è stata più grande del '+ str(round(np.mean(confronto_sol_list),2))+'% rispetto al lower bound e per '+ str(sol_esatta)+' volte è stata trovata la soluzione ottima')
 
