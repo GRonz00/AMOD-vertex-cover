@@ -9,7 +9,6 @@ MAX_WEIGHT = 100
 MAX_NODES = 50
 MIN_NODES = 5
 def crate_random_graph():
-
     num_nodes = random.randint(MIN_NODES, MAX_NODES)
     num_edges = random.randint(num_nodes - 1, num_nodes * (num_nodes - 1) // 2)
     G = nx.gnm_random_graph(num_nodes, num_edges)
@@ -39,6 +38,8 @@ def save_graf(G):
 
 if __name__ == '__main__':
     random.seed(44)
+    confronto_sol_list =[]
+    sol_esatta= 0
     for z in range(200):
         G_ori = crate_random_graph()
         G = G_ori.copy()
@@ -106,8 +107,13 @@ if __name__ == '__main__':
                 G = G_check
         #print('ricerca lambda eseguita ' + str(i)+ ' volte')
         valore_soluzione = sum(G_ori.nodes[u]['orig_weight'] for u in G_ori.nodes if sol_apx[u] == 1)
+        confronto_sol = round((valore_soluzione - lower_bound) / (lower_bound) * 100,2)
+        if confronto_sol == 0:
+            sol_esatta += 1
 
-        print('il lower bound è ' + str(lower_bound)+' mentre il valore della soluzione trovata '+ str(valore_soluzione))
+        print('il lower bound è ' + str(lower_bound)+' mentre il valore della soluzione trovata '+ str(valore_soluzione) + 'quindi differenza in percentuale =' + str(confronto_sol)+'%')
+        confronto_sol_list.append(confronto_sol)
+    print('in media la soluzione trovata è stata più grande del '+ str(round(np.mean(confronto_sol_list),2))+'% rispetto al lower bound e per '+ str(sol_esatta)+' volte è stata trovata la soluzione ottima')
 
 
 
