@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d568ffc-8e81-4fc4-bd1a-3f75bd05bb1c" name="Changes" comment="go">
+    <list default="true" id="2d568ffc-8e81-4fc4-bd1a-3f75bd05bb1c" name="Changes" comment="prima versione">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
@@ -23,6 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "GRonz00"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/GRonz00/AMOD-vertex-cover.git",
+    "accountId": "9f5ec717-56b7-4966-bf0b-e5159946efcb"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -63,11 +75,20 @@
       <option name="project" value="LOCAL" />
       <updated>1726160079989</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="prima versione">
+      <option name="closed" value="true" />
+      <created>1726226752835</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726226752835</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="go" />
-    <option name="LAST_COMMIT_MESSAGE" value="go" />
+    <MESSAGE value="prima versione" />
+    <option name="LAST_COMMIT_MESSAGE" value="prima versione" />
   </component>
 </project>
