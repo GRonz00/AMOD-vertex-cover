@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d568ffc-8e81-4fc4-bd1a-3f75bd05bb1c" name="Changes" comment="cambiata dimensione grafi">
+    <list default="true" id="2d568ffc-8e81-4fc4-bd1a-3f75bd05bb1c" name="Changes" comment="confronto gurobi e salvataggio su file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
@@ -35,6 +35,9 @@
     &quot;accountId&quot;: &quot;9f5ec717-56b7-4966-bf0b-e5159946efcb&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -44,15 +47,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Main.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python.test">
+}</component>
+  <component name="RunManager" selected="Python.Main">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AMOD" />
       <option name="ENV_FILES" value="" />
@@ -99,8 +102,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.Main" />
+        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -168,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726247128971</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="confronto gurobi e salvataggio su file">
+      <option name="closed" value="true" />
+      <created>1726670966118</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1726670966118</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -178,6 +189,7 @@
     <MESSAGE value="migliorata efficenza e complessità codice" />
     <MESSAGE value="aggiunto confronto soluzione percentuale e conteggio soluzioni ottime" />
     <MESSAGE value="cambiata dimensione grafi" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambiata dimensione grafi" />
+    <MESSAGE value="confronto gurobi e salvataggio su file" />
+    <option name="LAST_COMMIT_MESSAGE" value="confronto gurobi e salvataggio su file" />
   </component>
 </project>

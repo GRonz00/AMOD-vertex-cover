@@ -6,13 +6,14 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 from gurobipy import GRB
-
+N_ISTANZE = 80
+LITTLE_IST = 500
 MAX_WEIGHT = 100
-MAX_NODES = 1100
-MIN_NODES = 50
+MAX_NODES = 300
+MIN_NODES = 100
 DEBUGGING = False
-def crate_random_graph():
-    num_nodes = random.randint(MIN_NODES, MAX_NODES)
+def crate_random_graph(z):
+    num_nodes = random.randint(MIN_NODES + 200*z, MAX_NODES+ 200*z)
     num_edges = random.randint(num_nodes - 1, num_nodes * (num_nodes - 1) // 2)
     G = nx.gnm_random_graph(num_nodes, num_edges)
 
@@ -43,7 +44,7 @@ def solve_weighted_vertex_cover(G):
     start_time_gurobi = time.time()
     # Crea un modello Gurobi
     model = gp.Model("WeightedVertexCover")
-
+    model.setParam('TimeLimit', 8*60)
     # Disabilita l'output di log
     model.setParam('LogToConsole', 0)
 
@@ -59,44 +60,68 @@ def solve_weighted_vertex_cover(G):
 
     # Risolvi il modello
     model.optimize()
+    # Controlla lo stato del modello dopo l'ottimizzazione
+    status = model.status
 
+    # Stampa lo stato dell'ottimizzazione
+    if status == GRB.OPTIMAL:
+        print("Soluzione ottima trovata")
+        val_vertex_cover = sum(G.nodes[n]['weight'] for n in G.nodes() if x[n].x > 0.5)
+    elif status == GRB.INFEASIBLE:
+        print("Il modello non ha soluzioni fattibili")
+        val_vertex_cover = -1
+    elif status == GRB.UNBOUNDED:
+        print("Il modello è illimitato (unbounded)")
+        val_vertex_cover = -1
+    elif status == GRB.TIME_LIMIT:
+        print("Raggiunto il limite di tempo")
+        val_vertex_cover = -1
+    else:
+        print(f"Altro stato del modello: {status}")
+        val_vertex_cover = -1
     # Estrai la soluzione
-    val_vertex_cover = sum(G.nodes[n]['weight'] for n in G.nodes() if x[n].x > 0.5)
+
     
 
     return val_vertex_cover, time.time()-start_time_gurobi
 
 if __name__ == '__main__':
-    random.seed(46)
+    random.seed(42)
     confronto_sol_list =[]
     confronto_gurobi_list = []
-    confronto_tempo_list = []
+    tempo_gurobi_list = []
+    tempo_sol_list = []
     confronto_gurobi_LB = []
+    num_nodes = []
     sol_uguale_LB= 0
     sol_esatta = 0
-    timeout_seconds = 3 * 60
+
+    timeout_seconds = 15 * 60
     file = open("risultati.txt","w")
     file.close()
-    for z in range(3):
+    for z in range(N_ISTANZE):
+        print(z)
         time_sol = 0
         sol_gurobi = []
         little_inst = False
         exceeded_time = False
-        G_ori = crate_random_graph()
+        G_ori = crate_random_graph(z // 20)
         G = G_ori.copy()
-        if len(G.nodes) < 400:
+        file_uno = open("risultati.txt","a")
+        file_uno.write('grafico num' + str(z) + 'num_nodes='+ str(len(G.nodes()))+' num_edges='+ str(len(G.edges))+"\n")
+        file_uno.close()
+        file_uno = open("risultati.txt","a")
+        num_nodes.append(len(G.nodes))
+        if len(G.nodes) < LITTLE_IST:
             little_inst = True
             sol_gurobi = solve_weighted_vertex_cover(G)
         sol_apx = np.zeros(len(G.nodes))
         num_edge = len(G.edges())
-        #i = 1
         first_time = True
         lower_bound = 0
         start_time = time.time()
-        file_uno = open("risultati.txt","a")
-        file_uno.write('grafico num' + str(z) + 'num_nodes='+ str(len(G.nodes()))+' num_edges='+ str(len(G.edges))+"\n")
         if DEBUGGING:
-            print('grafico num' + str(z) + 'num_nodes='+ str(len(G.nodes()))+' num_edges='+ str(len(G.edges)))
+            print('grafico num' + str(z) + ' num_nodes='+ str(len(G.nodes()))+' num_edges='+ str(len(G.edges)))
         while True:
 
             elapsed_time = time.time() - start_time
@@ -147,7 +172,9 @@ if __name__ == '__main__':
                 first_time = False
             if not G_check.edges():
                 #print('è una cover non so se minimale'+ str(np.where(sol_apx == 1)[0]))
-                for j in np.where(sol_apx == 1)[0]:
+                node_weights = {node: G_ori.nodes[node]['orig_weight'] for node in G_ori.nodes}
+                nodes_ordered_by_weight = sorted(np.where(sol_apx == 1)[0], key=lambda x: node_weights[x], reverse=True)
+                for j in nodes_ordered_by_weight:
                     G_check = G_ori.copy()
                     node_to_remove = np.delete(np.where(sol_apx == 1)[0], np.where(np.where(sol_apx == 1)[0] == j))
                     G_check.remove_nodes_from(node_to_remove)
@@ -157,6 +184,7 @@ if __name__ == '__main__':
                         sol_apx[j] = 0
                 #print('la cover minimale è' + str(np.where(sol_apx == 1)[0]))
                 time_sol = round(time.time()-start_time,2)
+                tempo_sol_list.append(time_sol)
                 break
 
             else:
@@ -166,7 +194,6 @@ if __name__ == '__main__':
                 G = G_check
 
         if not exceeded_time:
-            #print('ricerca lambda eseguita ' + str(i)+ ' volte')
             valore_soluzione = sum(G_ori.nodes[u]['orig_weight'] for u in G_ori.nodes if sol_apx[u] == 1)
             confronto_sol = round((valore_soluzione - lower_bound) / lower_bound * 100, 2)
             if confronto_sol == 0:
@@ -178,33 +205,93 @@ if __name__ == '__main__':
                 print('il lower bound è ' + str(lower_bound)+' mentre il valore della soluzione trovata '+ str(valore_soluzione) + ' quindi differenza in percentuale =' + str(confronto_sol)+'%')
                 print('soluzione trovata in '+str(round(time_sol,2))+' secondi')
             if little_inst:
-                confronto_val_gurobi = round((valore_soluzione - sol_gurobi[0]) / sol_gurobi[0] * 100, 2)
-
-                confronto_gurobi_list.append(confronto_val_gurobi)
-                confronto_tempo_list.append(sol_gurobi[1]-time_sol)
-                confronto_gurobi_LB.append(round(sol_gurobi[0]-lower_bound/lower_bound*100,2))
+                if sol_gurobi[0] != -1:
+                    confronto_val_gurobi = round((valore_soluzione - sol_gurobi[0]) / sol_gurobi[0] * 100, 2)
+                    confronto_gurobi_list.append(confronto_val_gurobi)
+                    if confronto_val_gurobi <= 0:
+                        sol_esatta +=1
+                tempo_gurobi_list.append(sol_gurobi[1])
+                confronto_gurobi_LB.append(round((sol_gurobi[0]-lower_bound)/lower_bound*100,2))
                 file_uno.write('la soluzione trovata con gurobi ' + str(sol_gurobi[0])+' mentre il valore della soluzione trovata '+ str(valore_soluzione) + ' quindi aumento in percentuale =' + str(confronto_val_gurobi)+'%\n')
-                file_uno.write('tempo gurobi '+ str(round(sol_gurobi[1],2))+' s mentre tempo soluzione approssimata '+ str(time_sol)+ ' quindi aumento in percentuale '+ str(sol_gurobi[1]-time_sol)+'%\n\n')
+                file_uno.write('tempo gurobi '+ str(round(sol_gurobi[1],2))+' s mentre tempo soluzione approssimata '+ str(time_sol) + 's\n\n')
                 if DEBUGGING:
                     print('la soluzione trovata con gurobi ' + str(sol_gurobi[0])+' mentre il valore della soluzione trovata '+ str(valore_soluzione) + ' quindi aumento in percentuale =' + str(confronto_val_gurobi)+'%')
                     print('tempo gurobi '+ str(round(sol_gurobi[1],2))+' s mentre tempo soluzione approssimata '+ str(time_sol)+ ' quindi differenza '+ str(sol_gurobi[1]-time_sol)+'%')
 
-                if confronto_val_gurobi <= 0:
-                    sol_esatta +=1
+
             else:
-                confronto_gurobi_LB.append(-1)
                 if confronto_sol == 0:
                     sol_esatta += 1
             confronto_sol_list.append(confronto_sol)
         file_uno.close()
+    #metti risultati finali su file
     file_uno = open("risultati.txt","a")
     file_uno.write('in media la soluzione trovata è stata più grande del '+ str(round(np.mean(confronto_sol_list),2))+'% rispetto al lower bound e per '+ str(sol_uguale_LB)+' volte è stato trovato valore soluzione uguale al lower bound\n')
     file_uno.write('in media la soluzione trovata è stata più grande del '+ str(round(np.mean(confronto_gurobi_list),2))+'% rispetto alla soluzione di gurobi e per '+ str(sol_esatta)+' volte è stata trovata la soluzione esatta\n')
-    file_uno.write('tempo medio impiegato in più per trovare la soluzione '+ str(round(np.mean(confronto_tempo_list),2)) + 's')
+    file_uno.write('tempo medio impiegato in più per trovare la soluzione  su istanze piccole '+ str(round(np.mean([a - b for a, b in zip(tempo_sol_list, tempo_gurobi_list)if b != -1]),2)) + 's')
     file_uno.close()
+    #crea grafici
+    for j in range(2):
+
+        # Imposta la posizione delle barre
+        indices = np.arange(len(confronto_sol_list[j*(N_ISTANZE//4):(j+1)*N_ISTANZE//4]))
+        plt.figure()
+        # Grafico dei tempi
+        plt.bar(indices, tempo_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
+        plt.bar(indices, tempo_gurobi_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione Gurobi', color='red', alpha=0.7)
+        plt.axhline(y=480, color='r', linestyle='--', label='Timeout Gurobi')
+
+        # Aggiungi etichette e titolo
+        plt.xlabel('Istanza')
+        plt.ylabel('Tempo')
+        plt.title('Confronto Tempo Soluzioni')
+        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]], rotation=90)
+        plt.legend()
+        plt.ylim(0, max(max(tempo_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]),max(tempo_gurobi_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]) * 1.2))
+
+
+        plt.savefig('gTempo'+str(j))
+
+        plt.figure()
+        plt.bar(indices, confronto_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
+        plt.bar(indices, confronto_gurobi_LB[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione Gurobi', color='red', alpha=0.7)
+        plt.xlabel('Istanza')
+        plt.ylabel('Percentuale')
+        plt.title('Confronto Valori soluzioni')
+        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]], rotation=90)
+        plt.legend()
+        plt.ylim(0, max(confronto_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]) * 1.2)
+        plt.savefig('gValori'+ str(j))
+    for j in range(2,4):
+
+        # Imposta la posizione delle barre
+        indices = np.arange(len(confronto_sol_list[j*(N_ISTANZE//4):(j+1)*N_ISTANZE//4]))
+        plt.figure()
+        # Grafico dei tempi
+        plt.bar(indices, tempo_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
+
+        # Aggiungi etichette e titolo
+        plt.xlabel('Istanza')
+        plt.ylabel('Tempo')
+        plt.title('Tempo Soluzioni Grandi Istanze')
+        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]], rotation=90)
+        plt.legend()
+        plt.ylim(0, max(tempo_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]) * 1.2)
+
+        plt.savefig('gTempo'+str(j))
+
+        plt.figure()
+        plt.bar(indices, confronto_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
+        plt.xlabel('Istanza')
+        plt.ylabel('Percentuale')
+        plt.title('Confronto Valori soluzioni grandi istanze')
+        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]], rotation=90)
+        plt.legend()
+        plt.ylim(0, max(confronto_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]) * 1.2)
+        plt.savefig('gValori'+ str(j))
     print('in media la soluzione trovata è stata più grande del '+ str(round(np.mean(confronto_sol_list),2))+'% rispetto al lower bound e per '+ str(sol_uguale_LB)+' volte è stato trovato valore soluzione uguale al lower bound')
     print('in media la soluzione trovata è stata più grande del '+ str(round(np.mean(confronto_gurobi_list),2))+'% rispetto alla soluzione di gurobi e per '+ str(sol_esatta)+' volte è stata trovata la soluzione esatta')
-    print('tempo medio impiegato in più per trovare la soluzione '+ str(round(np.mean(confronto_tempo_list),2)) + 's')
+    print('tempo medio impiegato in più per trovare la soluzione '+ str(round(np.mean([a - b for a, b in zip(tempo_sol_list, tempo_gurobi_list)if b != -1]),2)) + 's')
 
 
 

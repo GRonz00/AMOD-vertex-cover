@@ -1,0 +1,363 @@
+grafico num0num_nodes=263 num_edges=7558
+il lower bound è 6422.79 mentre il valore della soluzione trovata 11629 quindi differenza in percentuale =81.06%
+la soluzione trovata con gurobi 11308 mentre il valore della soluzione trovata 11629 quindi aumento in percentuale =2.84%
+tempo gurobi 152.41 s mentre tempo soluzione approssimata 4.44s
+
+grafico num1num_nodes=207 num_edges=2581
+il lower bound è 5112.88 mentre il valore della soluzione trovata 8381 quindi differenza in percentuale =63.92%
+la soluzione trovata con gurobi 8067 mentre il valore della soluzione trovata 8381 quindi aumento in percentuale =3.89%
+tempo gurobi 12.9 s mentre tempo soluzione approssimata 0.97s
+
+grafico num2num_nodes=187 num_edges=1910
+il lower bound è 4515.14 mentre il valore della soluzione trovata 7217 quindi differenza in percentuale =59.84%
+la soluzione trovata con gurobi 6999 mentre il valore della soluzione trovata 7217 quindi aumento in percentuale =3.11%
+tempo gurobi 9.23 s mentre tempo soluzione approssimata 0.69s
+
+grafico num3num_nodes=177 num_edges=7337
+il lower bound è 4152.05 mentre il valore della soluzione trovata 7726 quindi differenza in percentuale =86.08%
+la soluzione trovata con gurobi 7635 mentre il valore della soluzione trovata 7726 quindi aumento in percentuale =1.19%
+tempo gurobi 2.21 s mentre tempo soluzione approssimata 2.97s
+
+grafico num4num_nodes=285 num_edges=4035
+il lower bound è 7402.53 mentre il valore della soluzione trovata 12289 quindi differenza in percentuale =66.01%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 12289 quindi aumento in percentuale =1.19%
+tempo gurobi 480.05 s mentre tempo soluzione approssimata 2.37s
+
+grafico num5num_nodes=143 num_edges=3885
+il lower bound è 3480.97 mentre il valore della soluzione trovata 6277 quindi differenza in percentuale =80.32%
+la soluzione trovata con gurobi 6144 mentre il valore della soluzione trovata 6277 quindi aumento in percentuale =2.16%
+tempo gurobi 1.07 s mentre tempo soluzione approssimata 1.16s
+
+grafico num6num_nodes=148 num_edges=9059
+il lower bound è 3667.52 mentre il valore della soluzione trovata 7031 quindi differenza in percentuale =91.71%
+la soluzione trovata con gurobi 6970 mentre il valore della soluzione trovata 7031 quindi aumento in percentuale =0.88%
+tempo gurobi 0.53 s mentre tempo soluzione approssimata 3.14s
+
+grafico num7num_nodes=294 num_edges=27211
+il lower bound è 7055.86 mentre il valore della soluzione trovata 13652 quindi differenza in percentuale =93.48%
+la soluzione trovata con gurobi 13523 mentre il valore della soluzione trovata 13652 quindi aumento in percentuale =0.95%
+tempo gurobi 64.86 s mentre tempo soluzione approssimata 21.73s
+
+grafico num8num_nodes=167 num_edges=7684
+il lower bound è 4038.86 mentre il valore della soluzione trovata 7546 quindi differenza in percentuale =86.83%
+la soluzione trovata con gurobi 7477 mentre il valore della soluzione trovata 7546 quindi aumento in percentuale =0.92%
+tempo gurobi 1.54 s mentre tempo soluzione approssimata 2.93s
+
+grafico num9num_nodes=147 num_edges=237
+il lower bound è 2741.29 mentre il valore della soluzione trovata 3186 quindi differenza in percentuale =16.22%
+la soluzione trovata con gurobi 3063 mentre il valore della soluzione trovata 3186 quindi aumento in percentuale =4.02%
+tempo gurobi 0.01 s mentre tempo soluzione approssimata 0.07s
+
+grafico num10num_nodes=175 num_edges=5771
+il lower bound è 4507.08 mentre il valore della soluzione trovata 8204 quindi differenza in percentuale =82.02%
+la soluzione trovata con gurobi 8115 mentre il valore della soluzione trovata 8204 quindi aumento in percentuale =1.1%
+tempo gurobi 3.75 s mentre tempo soluzione approssimata 2.24s
+
+grafico num11num_nodes=272 num_edges=23860
+il lower bound è 6848.83 mentre il valore della soluzione trovata 13238 quindi differenza in percentuale =93.29%
+la soluzione trovata con gurobi 13123 mentre il valore della soluzione trovata 13238 quindi aumento in percentuale =0.88%
+tempo gurobi 14.58 s mentre tempo soluzione approssimata 17.49s
+
+grafico num12num_nodes=191 num_edges=479
+il lower bound è 3977.22 mentre il valore della soluzione trovata 5318 quindi differenza in percentuale =33.71%
+la soluzione trovata con gurobi 4885 mentre il valore della soluzione trovata 5318 quindi aumento in percentuale =8.86%
+tempo gurobi 0.07 s mentre tempo soluzione approssimata 0.19s
+
+grafico num13num_nodes=271 num_edges=12600
+il lower bound è 6795.78 mentre il valore della soluzione trovata 12622 quindi differenza in percentuale =85.73%
+la soluzione trovata con gurobi 12436 mentre il valore della soluzione trovata 12622 quindi aumento in percentuale =1.5%
+tempo gurobi 73.14 s mentre tempo soluzione approssimata 8.71s
+
+grafico num14num_nodes=246 num_edges=15145
+il lower bound è 6617.59 mentre il valore della soluzione trovata 12531 quindi differenza in percentuale =89.36%
+la soluzione trovata con gurobi 12425 mentre il valore della soluzione trovata 12531 quindi aumento in percentuale =0.85%
+tempo gurobi 41.77 s mentre tempo soluzione approssimata 9.75s
+
+grafico num15num_nodes=295 num_edges=5059
+il lower bound è 6934.93 mentre il valore della soluzione trovata 11983 quindi differenza in percentuale =72.79%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 11983 quindi aumento in percentuale =0.85%
+tempo gurobi 480.06 s mentre tempo soluzione approssimata 3.3s
+
+grafico num16num_nodes=273 num_edges=17202
+il lower bound è 7046.43 mentre il valore della soluzione trovata 13395 quindi differenza in percentuale =90.1%
+la soluzione trovata con gurobi 13197 mentre il valore della soluzione trovata 13395 quindi aumento in percentuale =1.5%
+tempo gurobi 59.04 s mentre tempo soluzione approssimata 12.41s
+
+grafico num17num_nodes=120 num_edges=4577
+il lower bound è 3166.93 mentre il valore della soluzione trovata 5912 quindi differenza in percentuale =86.68%
+la soluzione trovata con gurobi 5811 mentre il valore della soluzione trovata 5912 quindi aumento in percentuale =1.74%
+tempo gurobi 0.39 s mentre tempo soluzione approssimata 1.17s
+
+grafico num18num_nodes=129 num_edges=6018
+il lower bound è 3343.71 mentre il valore della soluzione trovata 6298 quindi differenza in percentuale =88.35%
+la soluzione trovata con gurobi 6235 mentre il valore della soluzione trovata 6298 quindi aumento in percentuale =1.01%
+tempo gurobi 0.39 s mentre tempo soluzione approssimata 1.76s
+
+grafico num19num_nodes=181 num_edges=6692
+il lower bound è 4329.27 mentre il valore della soluzione trovata 8030 quindi differenza in percentuale =85.48%
+la soluzione trovata con gurobi 7870 mentre il valore della soluzione trovata 8030 quindi aumento in percentuale =2.03%
+tempo gurobi 3.28 s mentre tempo soluzione approssimata 2.75s
+
+grafico num20num_nodes=486 num_edges=104650
+il lower bound è 11822.28 mentre il valore della soluzione trovata 23276 quindi differenza in percentuale =96.88%
+la soluzione trovata con gurobi 23267 mentre il valore della soluzione trovata 23276 quindi aumento in percentuale =0.04%
+tempo gurobi 237.62 s mentre tempo soluzione approssimata 148.88s
+
+grafico num21num_nodes=438 num_edges=72329
+il lower bound è 10498.33 mentre il valore della soluzione trovata 20751 quindi differenza in percentuale =97.66%
+la soluzione trovata con gurobi 20497 mentre il valore della soluzione trovata 20751 quindi aumento in percentuale =1.24%
+tempo gurobi 379.72 s mentre tempo soluzione approssimata 90.59s
+
+grafico num22num_nodes=482 num_edges=60374
+il lower bound è 12025.29 mentre il valore della soluzione trovata 23403 quindi differenza in percentuale =94.61%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 23403 quindi aumento in percentuale =1.24%
+tempo gurobi 480.72 s mentre tempo soluzione approssimata 83.19s
+
+grafico num23num_nodes=432 num_edges=24855
+il lower bound è 11427.71 mentre il valore della soluzione trovata 21765 quindi differenza in percentuale =90.46%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 21765 quindi aumento in percentuale =1.24%
+tempo gurobi 480.45 s mentre tempo soluzione approssimata 29.68s
+
+grafico num24num_nodes=392 num_edges=13174
+il lower bound è 10085.21 mentre il valore della soluzione trovata 18466 quindi differenza in percentuale =83.1%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 18466 quindi aumento in percentuale =1.24%
+tempo gurobi 480.28 s mentre tempo soluzione approssimata 13.55s
+
+grafico num25num_nodes=493 num_edges=26549
+il lower bound è 12883.81 mentre il valore della soluzione trovata 24290 quindi differenza in percentuale =88.53%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 24290 quindi aumento in percentuale =1.24%
+tempo gurobi 480.31 s mentre tempo soluzione approssimata 36.52s
+
+grafico num26num_nodes=300 num_edges=17296
+il lower bound è 7780.32 mentre il valore della soluzione trovata 14651 quindi differenza in percentuale =88.31%
+la soluzione trovata con gurobi 14493 mentre il valore della soluzione trovata 14651 quindi aumento in percentuale =1.09%
+tempo gurobi 134.81 s mentre tempo soluzione approssimata 14.13s
+
+grafico num27num_nodes=432 num_edges=35889
+il lower bound è 10764.88 mentre il valore della soluzione trovata 20707 quindi differenza in percentuale =92.36%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 20707 quindi aumento in percentuale =1.09%
+tempo gurobi 480.64 s mentre tempo soluzione approssimata 44.23s
+
+grafico num28num_nodes=387 num_edges=28099
+il lower bound è 10010.41 mentre il valore della soluzione trovata 18992 quindi differenza in percentuale =89.72%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 18992 quindi aumento in percentuale =1.09%
+tempo gurobi 480.44 s mentre tempo soluzione approssimata 30.63s
+
+grafico num29num_nodes=382 num_edges=37709
+il lower bound è 9628.1 mentre il valore della soluzione trovata 18555 quindi differenza in percentuale =92.72%
+la soluzione trovata con gurobi 18355 mentre il valore della soluzione trovata 18555 quindi aumento in percentuale =1.09%
+tempo gurobi 230.9 s mentre tempo soluzione approssimata 41.38s
+
+grafico num30num_nodes=469 num_edges=102833
+il lower bound è 11368.95 mentre il valore della soluzione trovata 22542 quindi differenza in percentuale =98.28%
+la soluzione trovata con gurobi 22413 mentre il valore della soluzione trovata 22542 quindi aumento in percentuale =0.58%
+tempo gurobi 9.68 s mentre tempo soluzione approssimata 139.37s
+
+grafico num31num_nodes=457 num_edges=68969
+il lower bound è 11668.9 mentre il valore della soluzione trovata 22863 quindi differenza in percentuale =95.93%
+la soluzione trovata con gurobi 22676 mentre il valore della soluzione trovata 22863 quindi aumento in percentuale =0.82%
+tempo gurobi 381.19 s mentre tempo soluzione approssimata 92.03s
+
+grafico num32num_nodes=436 num_edges=46210
+il lower bound è 11147.49 mentre il valore della soluzione trovata 21535 quindi differenza in percentuale =93.18%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 21535 quindi aumento in percentuale =0.82%
+tempo gurobi 480.73 s mentre tempo soluzione approssimata 58.38s
+
+grafico num33num_nodes=476 num_edges=111054
+il lower bound è 11919.99 mentre il valore della soluzione trovata 23666 quindi differenza in percentuale =98.54%
+la soluzione trovata con gurobi 23592 mentre il valore della soluzione trovata 23666 quindi aumento in percentuale =0.31%
+tempo gurobi 7.23 s mentre tempo soluzione approssimata 154.23s
+
+grafico num34num_nodes=313 num_edges=24076
+il lower bound è 7823.68 mentre il valore della soluzione trovata 15128 quindi differenza in percentuale =93.36%
+la soluzione trovata con gurobi 14805 mentre il valore della soluzione trovata 15128 quindi aumento in percentuale =2.18%
+tempo gurobi 105.82 s mentre tempo soluzione approssimata 20.86s
+
+grafico num35num_nodes=321 num_edges=44840
+il lower bound è 8614.15 mentre il valore della soluzione trovata 16951 quindi differenza in percentuale =96.78%
+la soluzione trovata con gurobi 16847 mentre il valore della soluzione trovata 16951 quindi aumento in percentuale =0.62%
+tempo gurobi 9.72 s mentre tempo soluzione approssimata 41.04s
+
+grafico num36num_nodes=379 num_edges=5739
+il lower bound è 9233.28 mentre il valore della soluzione trovata 15608 quindi differenza in percentuale =69.04%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 15608 quindi aumento in percentuale =0.62%
+tempo gurobi 480.07 s mentre tempo soluzione approssimata 5.06s
+
+grafico num37num_nodes=406 num_edges=50111
+il lower bound è 10348.0 mentre il valore della soluzione trovata 20161 quindi differenza in percentuale =94.83%
+la soluzione trovata con gurobi 20000 mentre il valore della soluzione trovata 20161 quindi aumento in percentuale =0.8%
+tempo gurobi 261.92 s mentre tempo soluzione approssimata 57.93s
+
+grafico num38num_nodes=397 num_edges=46903
+il lower bound è 10061.99 mentre il valore della soluzione trovata 19545 quindi differenza in percentuale =94.25%
+la soluzione trovata con gurobi 19384 mentre il valore della soluzione trovata 19545 quindi aumento in percentuale =0.83%
+tempo gurobi 222.92 s mentre tempo soluzione approssimata 53.29s
+
+grafico num39num_nodes=490 num_edges=29668
+il lower bound è 12420.28 mentre il valore della soluzione trovata 23542 quindi differenza in percentuale =89.54%
+la soluzione trovata con gurobi -1 mentre il valore della soluzione trovata 23542 quindi aumento in percentuale =0.83%
+tempo gurobi 480.36 s mentre tempo soluzione approssimata 41.64s
+
+grafico num40num_nodes=633 num_edges=22281
+il lower bound è 16238.83 mentre il valore della soluzione trovata 29575 quindi differenza in percentuale =82.13%
+soluzione trovata in 38.83 secondi
+
+grafico num41num_nodes=687 num_edges=29282
+il lower bound è 16930.76 mentre il valore della soluzione trovata 31592 quindi differenza in percentuale =86.6%
+soluzione trovata in 57.53 secondi
+
+grafico num42num_nodes=530 num_edges=8694
+il lower bound è 13248.95 mentre il valore della soluzione trovata 22780 quindi differenza in percentuale =71.94%
+soluzione trovata in 11.82 secondi
+
+grafico num43num_nodes=646 num_edges=184575
+il lower bound è 16003.41 mentre il valore della soluzione trovata 31627 quindi differenza in percentuale =97.63%
+soluzione trovata in 345.48 secondi
+
+grafico num44num_nodes=615 num_edges=89609
+il lower bound è 14780.71 mentre il valore della soluzione trovata 28864 quindi differenza in percentuale =95.28%
+soluzione trovata in 160.22 secondi
+
+grafico num45num_nodes=662 num_edges=61648
+il lower bound è 16054.05 mentre il valore della soluzione trovata 30824 quindi differenza in percentuale =92.0%
+soluzione trovata in 120.47 secondi
+
+grafico num46num_nodes=538 num_edges=1963
+il lower bound è 11836.59 mentre il valore della soluzione trovata 16379 quindi differenza in percentuale =38.38%
+soluzione trovata in 2.26 secondi
+
+grafico num47num_nodes=622 num_edges=102773
+il lower bound è 15590.63 mentre il valore della soluzione trovata 30375 quindi differenza in percentuale =94.83%
+soluzione trovata in 188.54 secondi
+
+grafico num48num_nodes=612 num_edges=97861
+il lower bound è 16147.97 mentre il valore della soluzione trovata 31531 quindi differenza in percentuale =95.26%
+soluzione trovata in 173.17 secondi
+
+grafico num49num_nodes=586 num_edges=23757
+il lower bound è 14549.51 mentre il valore della soluzione trovata 26885 quindi differenza in percentuale =84.78%
+soluzione trovata in 38.9 secondi
+
+grafico num50num_nodes=620 num_edges=164711
+il lower bound è 15374.41 mentre il valore della soluzione trovata 30401 quindi differenza in percentuale =97.74%
+soluzione trovata in 297.61 secondi
+
+grafico num51num_nodes=664 num_edges=97168
+il lower bound è 16800.14 mentre il valore della soluzione trovata 32712 quindi differenza in percentuale =94.71%
+soluzione trovata in 190.42 secondi
+
+grafico num52num_nodes=533 num_edges=102464
+il lower bound è 13280.91 mentre il valore della soluzione trovata 26142 quindi differenza in percentuale =96.84%
+soluzione trovata in 159.77 secondi
+
+grafico num53num_nodes=656 num_edges=90106
+il lower bound è 16907.71 mentre il valore della soluzione trovata 33070 quindi differenza in percentuale =95.59%
+soluzione trovata in 175.57 secondi
+
+grafico num54num_nodes=686 num_edges=74780
+il lower bound è 17618.45 mentre il valore della soluzione trovata 34104 quindi differenza in percentuale =93.57%
+soluzione trovata in 151.95 secondi
+
+grafico num55num_nodes=652 num_edges=157900
+il lower bound è 17022.89 mentre il valore della soluzione trovata 33565 quindi differenza in percentuale =97.18%
+soluzione trovata in 302.87 secondi
+
+grafico num56num_nodes=531 num_edges=53147
+il lower bound è 13443.23 mentre il valore della soluzione trovata 25977 quindi differenza in percentuale =93.23%
+soluzione trovata in 82.37 secondi
+
+grafico num57num_nodes=650 num_edges=2539
+il lower bound è 14452.91 mentre il valore della soluzione trovata 19609 quindi differenza in percentuale =35.68%
+soluzione trovata in 3.75 secondi
+
+grafico num58num_nodes=604 num_edges=7265
+il lower bound è 14538.12 mentre il valore della soluzione trovata 24048 quindi differenza in percentuale =65.41%
+soluzione trovata in 10.63 secondi
+
+grafico num59num_nodes=632 num_edges=109829
+il lower bound è 16033.55 mentre il valore della soluzione trovata 31416 quindi differenza in percentuale =95.94%
+soluzione trovata in 204.29 secondi
+
+grafico num60num_nodes=821 num_edges=319600
+il lower bound è 20598.31 mentre il valore della soluzione trovata 40912 quindi differenza in percentuale =98.62%
+soluzione trovata in 778.42 secondi
+
+grafico num61num_nodes=720 num_edges=161846
+il lower bound è 18183.62 mentre il valore della soluzione trovata 35942 quindi differenza in percentuale =97.66%
+soluzione trovata in 341.02 secondi
+
+grafico num62num_nodes=756 num_edges=28840
+il lower bound è 18337.17 mentre il valore della soluzione trovata 33670 quindi differenza in percentuale =83.62%
+soluzione trovata in 61.81 secondi
+
+grafico num63num_nodes=861 num_edges=158245
+il lower bound è 21665.56 mentre il valore della soluzione trovata 42531 quindi differenza in percentuale =96.31%
+soluzione trovata in 408.21 secondi
+
+grafico num64num_nodes=898 num_edges=289569
+il lower bound è 22928.38 mentre il valore della soluzione trovata 45358 quindi differenza in percentuale =97.82%
+soluzione trovata in 763.46 secondi
+
+grafico num65num_nodes=881 num_edges=386520
+il lower bound è 22266.5 mentre il valore della soluzione trovata 44336 quindi differenza in percentuale =99.12%
+soluzione trovata in 1018.89 secondi
+
+grafico num66num_nodes=853 num_edges=243816
+il lower bound è 21257.33 mentre il valore della soluzione trovata 42012 quindi differenza in percentuale =97.64%
+soluzione trovata in 615.87 secondi
+
+grafico num67num_nodes=880 num_edges=58636
+il lower bound è 22446.88 mentre il valore della soluzione trovata 42551 quindi differenza in percentuale =89.56%
+soluzione trovata in 153.3 secondi
+
+grafico num68num_nodes=741 num_edges=182248
+il lower bound è 18384.98 mentre il valore della soluzione trovata 36210 quindi differenza in percentuale =96.95%
+soluzione trovata in 397.99 secondi
+
+grafico num69num_nodes=822 num_edges=229950
+il lower bound è 21363.24 mentre il valore della soluzione trovata 42317 quindi differenza in percentuale =98.08%
+soluzione trovata in 557.71 secondi
+
+grafico num70num_nodes=821 num_edges=215059
+il lower bound è 20371.42 mentre il valore della soluzione trovata 40128 quindi differenza in percentuale =96.98%
+soluzione trovata in 519.49 secondi
+
+grafico num71num_nodes=780 num_edges=240684
+il lower bound è 19014.25 mentre il valore della soluzione trovata 37676 quindi differenza in percentuale =98.15%
+soluzione trovata in 556.65 secondi
+
+grafico num72num_nodes=839 num_edges=246860
+il lower bound è 21684.82 mentre il valore della soluzione trovata 42817 quindi differenza in percentuale =97.45%
+soluzione trovata in 612.86 secondi
+
+grafico num73num_nodes=821 num_edges=56542
+il lower bound è 20306.28 mentre il valore della soluzione trovata 38563 quindi differenza in percentuale =89.91%
+soluzione trovata in 139.38 secondi
+
+grafico num74num_nodes=793 num_edges=38558
+il lower bound è 20610.96 mentre il valore della soluzione trovata 38484 quindi differenza in percentuale =86.72%
+soluzione trovata in 89.2 secondi
+
+grafico num75num_nodes=858 num_edges=220789
+il lower bound è 22283.31 mentre il valore della soluzione trovata 43913 quindi differenza in percentuale =97.07%
+soluzione trovata in 562.47 secondi
+
+grafico num76num_nodes=705 num_edges=200740
+il lower bound è 17733.62 mentre il valore della soluzione trovata 35099 quindi differenza in percentuale =97.92%
+soluzione trovata in 413.95 secondi
+
+grafico num77num_nodes=707 num_edges=245302
+il lower bound è 17664.45 mentre il valore della soluzione trovata 35135 quindi differenza in percentuale =98.9%
+soluzione trovata in 514.77 secondi
+
+grafico num78num_nodes=816 num_edges=307962
+il lower bound è 21285.99 mentre il valore della soluzione trovata 42279 quindi differenza in percentuale =98.62%
+soluzione trovata in 747.41 secondi
+
+grafico num79num_nodes=736 num_edges=93385
+il lower bound è 18493.14 mentre il valore della soluzione trovata 35944 quindi differenza in percentuale =94.36%
+soluzione trovata in 209.48 secondi
+
+in media la soluzione trovata è stata più grande del 87.34% rispetto al lower bound e per 0 volte è stato trovato valore soluzione uguale al lower bound
+in media la soluzione trovata è stata più grande del 1.69% rispetto alla soluzione di gurobi e per 0 volte è stata trovata la soluzione esatta
+tempo medio impiegato in più per trovare la soluzione  su istanze piccole -160.25s
