@@ -62,27 +62,23 @@ def solve_weighted_vertex_cover(G):
     model.optimize()
     # Controlla lo stato del modello dopo l'ottimizzazione
     status = model.status
-
+    val_vertex_cover = -1
     # Stampa lo stato dell'ottimizzazione
     if status == GRB.OPTIMAL:
         print("Soluzione ottima trovata")
         val_vertex_cover = sum(G.nodes[n]['weight'] for n in G.nodes() if x[n].x > 0.5)
     elif status == GRB.INFEASIBLE:
         print("Il modello non ha soluzioni fattibili")
-        val_vertex_cover = -1
     elif status == GRB.UNBOUNDED:
         print("Il modello è illimitato (unbounded)")
-        val_vertex_cover = -1
     elif status == GRB.TIME_LIMIT:
-        print("Raggiunto il limite di tempo")
-        val_vertex_cover = -1
+        if model.SolCount > 0:
+            # Se c'è una soluzione, estrai il miglior vertex cover trovato
+            val_vertex_cover = sum(G.nodes[n]['weight'] for n in G.nodes() if x[n].x > 0.5)
+            print("Soluzione approssimata trovata")
     else:
         print(f"Altro stato del modello: {status}")
-        val_vertex_cover = -1
     # Estrai la soluzione
-
-    
-
     return val_vertex_cover, time.time()-start_time_gurobi
 
 if __name__ == '__main__':
