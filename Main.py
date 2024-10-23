@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 from gurobipy import GRB
-N_ISTANZE = 80
+N_ISTANZE = 40
 LITTLE_IST = 500
 MAX_WEIGHT = 100
 MAX_NODES = 300
@@ -230,61 +230,63 @@ if __name__ == '__main__':
     for j in range(2):
 
         # Imposta la posizione delle barre
-        indices = np.arange(len(confronto_sol_list[j*(N_ISTANZE//4):(j+1)*N_ISTANZE//4]))
+        indices = np.arange(len(confronto_sol_list[j*(20):(j+1)*20]))
         plt.figure()
         # Grafico dei tempi
-        plt.bar(indices, tempo_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
-        plt.bar(indices, tempo_gurobi_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione Gurobi', color='red', alpha=0.7)
+        plt.bar(indices, tempo_sol_list[j*20:(j+1)*20], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
+        plt.bar(indices, tempo_gurobi_list[j*20:(j+1)*20], width=0.4, label='Soluzione Gurobi', color='red', alpha=0.7)
         plt.axhline(y=480, color='r', linestyle='--', label='Timeout Gurobi')
 
         # Aggiungi etichette e titolo
         plt.xlabel('Istanza')
         plt.ylabel('Tempo')
         plt.title('Confronto Tempo Soluzioni')
-        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]], rotation=90)
+        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*20:(j+1)*20]], rotation=90)
         plt.legend()
-        plt.ylim(0, max(max(tempo_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]),max(tempo_gurobi_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]) * 1.2))
+        plt.ylim(0, max(max(tempo_sol_list[j*20:(j+1)*20]),max(tempo_gurobi_list[j*20:(j+1)*20]) * 1.2))
 
 
         plt.savefig('gTempo'+str(j))
 
         plt.figure()
-        plt.bar(indices, confronto_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
-        plt.bar(indices, confronto_gurobi_LB[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione Gurobi', color='red', alpha=0.7)
+        plt.bar(indices, confronto_sol_list[j*20:(j+1)*20], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
+        plt.bar(indices, confronto_gurobi_LB[j*20:(j+1)*20], width=0.4, label='Soluzione Gurobi', color='red', alpha=0.7)
         plt.xlabel('Istanza')
         plt.ylabel('Percentuale')
         plt.title('Confronto Valori soluzioni')
-        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]], rotation=90)
+        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*20:(j+1)*20]], rotation=90)
         plt.legend()
-        plt.ylim(0, max(confronto_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]) * 1.2)
+        plt.ylim(0, max(confronto_sol_list[j*20:(j+1)*20]) * 1.2)
         plt.savefig('gValori'+ str(j))
+    """""
     for j in range(2,4):
 
         # Imposta la posizione delle barre
-        indices = np.arange(len(confronto_sol_list[j*(N_ISTANZE//4):(j+1)*N_ISTANZE//4]))
+        indices = np.arange(len(confronto_sol_list[j*(20):(j+1)*20]))
         plt.figure()
         # Grafico dei tempi
-        plt.bar(indices, tempo_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
+        plt.bar(indices, tempo_sol_list[j*20:(j+1)*20], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
 
         # Aggiungi etichette e titolo
         plt.xlabel('Istanza')
         plt.ylabel('Tempo')
         plt.title('Tempo Soluzioni Grandi Istanze')
-        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]], rotation=90)
+        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*20:(j+1)*20]], rotation=90)
         plt.legend()
-        plt.ylim(0, max(tempo_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]) * 1.2)
+        plt.ylim(0, max(tempo_sol_list[j*20:(j+1)*20]) * 1.2)
 
         plt.savefig('gTempo'+str(j))
 
         plt.figure()
-        plt.bar(indices, confronto_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
+        plt.bar(indices, confronto_sol_list[j*20:(j+1)*20], width=0.4, label='Soluzione algoritmo', color='blue', alpha=0.7)
         plt.xlabel('Istanza')
         plt.ylabel('Percentuale')
         plt.title('Confronto Valori soluzioni grandi istanze')
-        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]], rotation=90)
+        plt.xticks(ticks=indices, labels=[str(i) for i in num_nodes[j*20:(j+1)*20]], rotation=90)
         plt.legend()
-        plt.ylim(0, max(confronto_sol_list[j*N_ISTANZE//4:(j+1)*N_ISTANZE//4]) * 1.2)
+        plt.ylim(0, max(confronto_sol_list[j*20:(j+1)*20]) * 1.2)
         plt.savefig('gValori'+ str(j))
+        """
     print('in media la soluzione trovata è stata più grande del '+ str(round(np.mean(confronto_sol_list),2))+'% rispetto al lower bound e per '+ str(sol_uguale_LB)+' volte è stato trovato valore soluzione uguale al lower bound')
     print('in media la soluzione trovata è stata più grande del '+ str(round(np.mean(confronto_gurobi_list),2))+'% rispetto alla soluzione di gurobi e per '+ str(sol_esatta)+' volte è stata trovata la soluzione esatta')
     print('tempo medio impiegato in più per trovare la soluzione '+ str(round(np.mean([a - b for a, b in zip(tempo_sol_list, tempo_gurobi_list)if b != -1]),2)) + 's')

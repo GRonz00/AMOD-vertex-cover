@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d568ffc-8e81-4fc4-bd1a-3f75bd05bb1c" name="Changes" comment="confronto gurobi e salvataggio su file">
+    <list default="true" id="2d568ffc-8e81-4fc4-bd1a-3f75bd05bb1c" name="Changes" comment="gurobi time out">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gTempo0.png" beforeDir="false" afterPath="$PROJECT_DIR$/gTempo0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gTempo1.png" beforeDir="false" afterPath="$PROJECT_DIR$/gTempo1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gValori0.png" beforeDir="false" afterPath="$PROJECT_DIR$/gValori0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gValori1.png" beforeDir="false" afterPath="$PROJECT_DIR$/gValori1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risultati.txt" beforeDir="false" afterPath="$PROJECT_DIR$/risultati.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +184,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726670966118</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="confronto gurobi e salvataggio su file">
+      <option name="closed" value="true" />
+      <created>1727087468417</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727087468417</updated>
+    </task>
+    <task id="LOCAL-00009" summary="gurobi time out">
+      <option name="closed" value="true" />
+      <created>1729615084038</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1729615084038</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -190,6 +211,7 @@
     <MESSAGE value="aggiunto confronto soluzione percentuale e conteggio soluzioni ottime" />
     <MESSAGE value="cambiata dimensione grafi" />
     <MESSAGE value="confronto gurobi e salvataggio su file" />
-    <option name="LAST_COMMIT_MESSAGE" value="confronto gurobi e salvataggio su file" />
+    <MESSAGE value="gurobi time out" />
+    <option name="LAST_COMMIT_MESSAGE" value="gurobi time out" />
   </component>
 </project>
