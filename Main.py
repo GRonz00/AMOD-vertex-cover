@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 from gurobipy import GRB
-N_ISTANZE = 40
+N_ISTANZE = 80
 LITTLE_IST = 500
 MAX_WEIGHT = 100
 MAX_NODES = 300
@@ -262,7 +262,6 @@ if __name__ == '__main__':
         plt.legend()
         plt.ylim(0, max(confronto_sol_list[j*20:(j+1)*20]) * 1.2)
         plt.savefig('gValori'+ str(j))
-    """""
     for j in range(2,4):
 
         # Imposta la posizione delle barre
@@ -290,7 +289,6 @@ if __name__ == '__main__':
         plt.legend()
         plt.ylim(0, max(confronto_sol_list[j*20:(j+1)*20]) * 1.2)
         plt.savefig('gValori'+ str(j))
-        """
     print('in media la soluzione trovata è stata più grande del '+ str(round(np.mean(confronto_sol_list),2))+'% rispetto al lower bound e per '+ str(sol_uguale_LB)+' volte è stato trovato valore soluzione uguale al lower bound')
     print('in media la soluzione trovata è stata più grande del '+ str(round(np.mean(confronto_gurobi_list),2))+'% rispetto alla soluzione di gurobi e per '+ str(sol_esatta)+' volte è stata trovata la soluzione esatta')
     print('tempo medio impiegato in più per trovare la soluzione '+ str(round(np.mean([a - b for a, b in zip(tempo_sol_list, tempo_gurobi_list)if b != -1]),2)) + 's')
